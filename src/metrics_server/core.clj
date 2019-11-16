@@ -287,7 +287,7 @@
 )
 
 (defn task2a [files]
-  (filter (fn [x] (not (get x :directory)) files))
+  (filter (fn [x] (not (get x :directory))) files)
 )
 
 (defn -main [& args]
