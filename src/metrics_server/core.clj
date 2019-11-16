@@ -291,7 +291,7 @@
 )
 
 (defn task2b [files]
-  (filter (fn [x] (not (get x :executable))) files)
+  (filter (fn [x] (get x :executable)) files)
 )
 
 (defn conftocfg [filename]
@@ -310,9 +310,17 @@
   ) files)
 )
 
+(defn task3 [files]
+  (/ 
+     (reduce + (map (fn [file] (get file :size)) (filter (fn [x] (not (get x :directory))) files)))
+     (count (filter (fn [x] (not (get x :directory))) files))
+  )
+)
+
 (defn -main [& args]
   (println (task1 (get-metrics)))
   (println (task2a (get-files)))
   (println (task2b (get-files)))
   (println (task2c (get-files)))
+  (println (task3 (get-files)))
 )
