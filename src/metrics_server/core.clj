@@ -290,7 +290,12 @@
   (filter (fn [x] (not (get x :directory))) files)
 )
 
+(defn task2b [files]
+  (filter (fn [x] (not (get x :executable))) files)
+)
+
 (defn -main [& args]
   (println (task1 (get-metrics)))
   (println (task2a (get-files)))
+  (println (task2b (get-files)))
 )
