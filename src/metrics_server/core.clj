@@ -294,8 +294,25 @@
   (filter (fn [x] (not (get x :executable))) files)
 )
 
+(defn conftocfg [filename]
+  (clojure.string/replace filename #".conf" ".cfg")
+)
+
+(defn task2c [files]
+  (map (fn [file]
+    {
+      :name (conftocfg (get file :name))
+      :size (get file :size)
+      :changed (get file :changed)
+      :directory (get file :directory)
+      :executable (get file :executable)
+    }
+  ) files)
+)
+
 (defn -main [& args]
   (println (task1 (get-metrics)))
   (println (task2a (get-files)))
   (println (task2b (get-files)))
+  (println (task2c (get-files)))
 )
