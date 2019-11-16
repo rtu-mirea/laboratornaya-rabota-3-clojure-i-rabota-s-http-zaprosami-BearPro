@@ -282,4 +282,10 @@
   (:data (get-files-with-http-info)))
 
 
+(defn task1 [metrics]
+  (filter (fn [x] (< (get x :cpuTemp) 2)) metrics)
+)
 
+(defn -main [& args]
+  (println (task1 (get-metrics)))
+)
