@@ -286,6 +286,11 @@
   (filter (fn [x] (< (get x :cpuTemp) 2)) metrics)
 )
 
+(defn task2a [files]
+  (filter (fn [x] (not (get x :directory)) files))
+)
+
 (defn -main [& args]
   (println (task1 (get-metrics)))
+  (println (task2a (get-files)))
 )
